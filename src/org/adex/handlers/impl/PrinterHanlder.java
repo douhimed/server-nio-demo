@@ -4,19 +4,17 @@ import org.adex.servers.handlers.Handler;
 
 import java.io.IOException;
 
-public class PrinterHanlder<T> implements Handler<T> {
-
-    private final Handler<T> other;
+public class PrinterHanlder<T> extends DecoratedHandler<T> {
 
     public PrinterHanlder(Handler<T> handler) {
-        this.other = handler;
+        super(handler);
     }
 
     @Override
     public void handle(T t) throws IOException {
         try {
             System.out.println("Connected " + t);
-            other.handle(t);
+            super.handle(t);
         } finally {
             System.out.println("Disconnected " + t);
         }

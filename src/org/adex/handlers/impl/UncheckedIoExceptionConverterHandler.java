@@ -5,18 +5,16 @@ import org.adex.servers.handlers.Handler;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 
-public class UncheckedIoExceptionConverterHandler<T> implements Handler<T> {
-
-    private final Handler<T> other;
+public class UncheckedIoExceptionConverterHandler<T> extends DecoratedHandler<T> {
 
     public UncheckedIoExceptionConverterHandler(Handler<T> other) {
-        this.other = other;
+        super(other);
     }
 
     @Override
     public void handle(T t) {
         try {
-            other.handle(t);
+            super.handle(t);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
