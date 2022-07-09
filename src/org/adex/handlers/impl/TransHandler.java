@@ -14,14 +14,12 @@ public class TransHandler implements Handler<Socket> {
         try (socket; // Java 9 mocking for closing
              final InputStream inputStream = socket.getInputStream();
              final OutputStream outputStream = socket.getOutputStream()) {
-            System.out.println("Connected " + socket);
             //inputStream.transferTo(outputStream); // jdk +9
             int data;
             while ((data = inputStream.read()) != -1) {
+                if(data == '%') throw new IOException("Ooopsie"); // simulation for Thread.UncaughtExceptionHandler in ExecutorServiceHandler
                 outputStream.write(Util.trans(data));
             }
-        } finally {
-            System.out.println("Disconnected " + socket);
         }
     }
 }
