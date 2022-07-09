@@ -1,6 +1,4 @@
-package org.adex.servers.handlers.impl;
-
-import org.adex.servers.handlers.Handler;
+package org.adex.handlers.impl;
 
 public class ThreadedHandler<T> extends UncheckedIoExceptionConverterHandler<T> {
 

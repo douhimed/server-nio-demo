@@ -1,9 +1,9 @@
 package org.adex.servers;
 
-import org.adex.servers.handlers.Handler;
-import org.adex.servers.handlers.impl.PrinterHanlder;
-import org.adex.servers.handlers.impl.ThreadedHandler;
-import org.adex.servers.handlers.impl.TransHandler;
+import org.adex.handlers.impl.Handler;
+import org.adex.handlers.impl.PrinterHanlder;
+import org.adex.handlers.impl.ThreadedHandler;
+import org.adex.handlers.impl.TransHandler;
 
 import java.io.IOException;
 import java.net.ServerSocket;

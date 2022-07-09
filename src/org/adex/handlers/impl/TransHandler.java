@@ -1,7 +1,6 @@
-package org.adex.servers.handlers.impl;
+package org.adex.handlers.impl;
 
-import org.adex.servers.handlers.Handler;
-import org.adex.servers.utils.Util;
+import org.adex.utilities.Util;
 
 import java.io.IOException;
 import java.io.InputStream;

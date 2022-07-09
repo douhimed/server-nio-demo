@@ -1,4 +1,4 @@
-package org.adex.utils;
+package org.adex.utilities;
 
 public class Util {
     public static int trans(int data) {
