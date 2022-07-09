@@ -13,10 +13,7 @@ public class ExecutorServiceBlockingServer {
     public static void main(String[] args) throws IOException {
 
         ServerSocket serverSocket = new ServerSocket(9090);
-        final Handler<Socket> handler = new ExecutorServiceHandler<>(
-                new PrinterHanlder<>(new TransHandler()),
-                Executors.newCachedThreadPool(),
-                (thread, exception) -> System.err.println("Uncaught "  + thread + ", Exception :" + exception));
+        final Handler<Socket> handler = new ExecutorServiceHandler<>(new PrinterHanlder<>(new TransHandler()));
 
         while (true) {
             final Socket socket = serverSocket.accept();

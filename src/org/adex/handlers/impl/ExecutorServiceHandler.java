@@ -1,10 +1,8 @@
 package org.adex.handlers.impl;
 
-import java.io.IOException;
-import java.io.UncheckedIOException;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
-import java.util.concurrent.ThreadPoolExecutor;
 
 public class ExecutorServiceHandler<T> extends DecoratedHandler<T> {
 
@@ -15,6 +13,16 @@ public class ExecutorServiceHandler<T> extends DecoratedHandler<T> {
         super(other);
         this.pool = pool;
         this.exceptionHandler = exceptionHandler;
+    }
+
+    public ExecutorServiceHandler(Handler<T> other, ExecutorService pool) {
+        this(other, pool, (thread, exception) -> System.err.println("Uncaught " + thread + ", Exception :" + exception));
+    }
+
+    public ExecutorServiceHandler(Handler<T> other) {
+        this(other,
+                Executors.newFixedThreadPool(10)
+                , (thread, exception) -> System.err.println("Uncaught " + thread + ", Exception :" + exception));
     }
 
     @Override
