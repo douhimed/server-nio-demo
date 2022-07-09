@@ -1,4 +1,4 @@
-package org.adex.servers.utils;
+package org.adex.utils;
 
 import java.io.IOException;
 import java.net.Socket;
